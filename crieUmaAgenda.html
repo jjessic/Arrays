@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+</head>
+<body>
+    <script>
+
+    let arrUsers = [];
+        function showMenu() {
+            return parseInt(
+                prompt(`
+                ------- Agenda de Contatos -------
+                [1] - Adicionar número
+                [2] - Mostrar contatos
+                [3] - Atualizar números de contato
+                [4] - Deletar número de contato
+                [5] - Sair da agenda de contatos
+            `));
+        }
+
+        const AddNumber = () => {
+            const nameUser = prompt("Informe o nome a ser adicionado:");
+            const numberUser = prompt("Informe o número a ser adicionado:");
+
+            if (!nameUser || !numberUser) {
+                alert("Os campos são obrigatórios!");
+            }
+
+            arrUsers.push({nameUser, numberUser});
+
+            console.log(arrUsers);
+        }
+
+    const ListNumber = () => {
+    let listUser = "";
+    arrUsers.forEach((dataUser) => {
+            listUser += `
+            Nome: ${dataUser.nameUser} Número: ${dataUser.numberUser}`
+        });
+
+        console.log(listUser);
+
+        alert("------- Agenda de Contatos -------" + listUser);
+}
+
+    function UpdateNumberInfo() {
+        const findNumber = prompt("Informe o número que você deseja atualizar!")
+        const usuarioEncontrado = arrUsers.find(
+            user => user.numberUser === findNumber
+        );
+
+        if (!usuarioEncontrado) {
+        alert("O usuário não foi encontrado.")
+        return;
+        }
+        
+        const novoNumero = prompt("Informe o novo número:")
+        const novoNomeUsuario = prompt("Informe o nome do usuário:")
+
+        novoEmail ? (usuarioEncontrado.numberUser = novoNumero) : null;
+
+        if (novoNomeUsuario) {
+            usuarioEncontrado.nameUser = novoNomeUsuario;
+        }
+
+        alert("Usuário foi encontrado com sucesso.")
+    }
+
+        function DeleteNumber() {
+            const numberDelete = prompt("Informe o número que deseja apagar.")
+            const indiceDelete = arrUsers.findIndex (numero => numero.numberUser === numberDelete)
+
+            
+            if (!numberDelete) {
+                alert("O campo é obrigatório.")
+            } else if (confirmação) {
+                arrUsers.splice(indiceDelete, 1)
+                const confirmação = window.confirm (`Você deseja mesmo excluir o número ${numberDelete}?`)
+                alert("Número deletado com sucesso.")
+            } else {
+                alert("Operação cancelada.")
+            }
+    }
+        let opcaoNumber = true;
+
+        while (opcaoNumber){  
+        switch (showMenu()) {
+            case 1: 
+                AddNumber();
+                break;
+            case 2:
+                ListNumber();
+                break;
+            case 3:
+                UpdateNumberInfo();
+                break;
+            case 4: 
+                DeleteNumber();
+                break;
+            case 5: 
+            opcaoUser = false;
+            alert("Saindo da agenda de contatos, até mais!")
+                break;
+            default: 
+                alert("Opção inválida! Tente novamente.")
+                break;
+        }
+    }        
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
